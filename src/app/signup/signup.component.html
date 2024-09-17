@@ -1,0 +1,45 @@
+
+
+
+
+
+
+
+<body>
+ 
+  <div class="signup-container">
+    <h1>Signup</h1>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <!-- Username Field -->
+      <input formControlName="username" placeholder="Username" required class="form-control"
+             [ngClass]="{'is-invalid': isFormSubmit && valid['username'].errors}">
+      <div *ngIf="isFormSubmit && valid['username'].touched" class="invalid-feedback">
+        <div *ngIf="valid['username']?.errors?.['required']"><i>Username is required</i></div>
+        <div *ngIf="valid['username']?.errors?.['minlength']"><i>Username must be at least 3 characters long</i></div>
+      </div>
+  
+    
+      <input formControlName="password" type="password" placeholder="Password" class="form-control"
+             required [ngClass]="{'is-invalid':isFormSubmit&& valid['password'].errors}">
+      <div *ngIf="isFormSubmit && valid['password'].touched" class="invalid-feedback">
+        <div *ngIf="valid['password']?.errors?.['required']"><i>Password is required</i></div>
+        <div *ngIf="valid['password']?.errors?.['minlength']"><i>Password must be at least 4 characters long</i></div>
+      </div>
+  
+     
+      <input type="email" name="email" class="form-control" placeholder="Email" formControlName="email"
+             required [ngClass]="{'is-invalid': isFormSubmit && valid['email'].errors}">
+      <div *ngIf="isFormSubmit && valid['email'].touched" class="invalid-feedback">
+        <div *ngIf="valid['email']?.errors?.['required']"><i>Enter your email</i></div>
+        <div *ngIf="valid['email']?.errors?.['pattern']"><i>Enter a valid email</i></div>
+      </div>
+  
+      <button type="submit">Signup</button>
+    </form>
+  </div>
+  
+
+
+
+ 
+</body>

@@ -1,0 +1,46 @@
+
+
+ 
+<div class="login-container">
+  <div class="login-card">
+    
+   
+    
+    <img src="https://themaestro.in/assets/imgs/new/logo.svg" alt="Maestro Logo" class="logo" />
+
+  
+    <h2>Welcome Back!</h2>
+
+   
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+     
+      <div class="input-container">
+        
+        <i class="fas fa-user"></i>
+        <input formControlName="username" placeholder="User Name" class="form-control" required 
+        [ngClass]="{'is-invalid':isFormSubmit && valid.username.errors}">
+        <div *ngIf="isFormSubmit && valid.username?.touched" class="invalid-feedback">
+
+        </div>
+      </div>
+      <div class="input-container">
+        <input formControlName="password" id="password" type="password" placeholder="Password" class="form-control"
+        required [ngClass]="{'is-invalid':isFormSubmit && valid.password.errors}">
+        <i class="fas fa-lock"></i>
+        <i class="fas fa-eye password-toggle" (click)="togglePasswordVisibility()" id="togglePassword"></i>
+        <div *ngIf="isFormSubmit && valid.password?.touched" class="invalid-feedback">
+        
+        </div>
+      </div>
+
+     
+      <a [routerLink]="['/forgot-password']" class="forgot-password">Forgot Password?</a>
+
+     
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</div>
+
+
